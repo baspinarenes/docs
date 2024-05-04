@@ -1,0 +1,166 @@
+---
+title: 'Summary'
+description: 'CI/CD hakkında özet bilgi.'
+---
+
+<img
+  className="block mx-auto w-12"
+  src="/images/ci-cd.png"
+  alt="CI/CD"
+/>
+
+## What CI/CD?
+
+Uzuncası "continuous integration and continuous delivery/deployment" olan bu kavram,
+DevOps'un mihenk taşı ve yazılım geliştirme sürecinin yaşam döngüsüdür. Basitçe ifade
+etmek gerekirse, yazdığınız kodun canlıya alınması için 3 aşama gerekir:
+
+
+<div className="ml-4 flex flex-col">
+  <Step stepNumber={1}><span className="block mt-2 -ml-4 pb-2 font-bold">Build</span></Step>
+  <Step stepNumber={2}><span className="block mt-2 -ml-4 pb-2 font-bold">Test</span></Step>
+  <Step stepNumber={3}><span className="block mt-2 -ml-4 font-bold">Deploy</span></Step>
+</div>
+
+İşte tüm bu adımların otomatize edilme işlemidir.
+
+## Why CI/CD?
+
+Tüm bu süreçlerin otomatize edilmesinin birkaç avantajı vardır:
+
+<div className="ml-4 flex flex-col">
+  <Step><span className="block mt-2 -ml-4 pb-2">Otomatik yapılan işleme insan gücü harcanmamış olur ve efor önemli işlere ayrılabilir.</span></Step>
+  <Step><span className="block mt-2 -ml-4 pb-2">Hatalar canlıya çıkmadan önce tespit edilir ve uygulamanın down olma süresi azalır. Yazılımda da itibardan tasarruf olmamalıdır.</span></Step>
+  <Step><span className="block mt-2 -ml-4 pb-2">Deployment sırası beklemeniz gerekmez. Kullanıcılar daha sık ve kararlı güncellemeler alır.</span></Step>
+  <Step><span className="block mt-2 -ml-4 pb-2">Yazılımcılar deployment stresinden kurtulduğu için burnout azalır.</span></Step>
+  <Step><span className="block mt-2 -ml-4">Olası bir incident anında siteyi önceki haline almak daha kolaydır.</span></Step>
+</div>
+
+## Concepts
+
+<img
+  className="block mx-auto w-12 rounded-lg"
+  src="/images/ci-cd-2.png"
+  alt="CI/CD"
+/>
+
+### Continuous Integration (CI)
+
+Birden fazla yazılımcının aynı projede çalıştığı durumlarda, kodların sık sık
+ana branch'e entegre edilmesidir yani merge edilmesidir. Uygulama derlenir ve
+testler çalıştırılır. Biriktirerek merge etme karmaşıklığından da kaçılmış olunur.
+
+### Continuous Delivery (CD)
+
+Kod değişikliklerinin paketlenip otomatik olarak test ortamına deploy edilmesi ve
+production için hazır olmasıdır. Prouction'a alınma kararı ise manueldir.
+
+### Continuous Deployment (CD)
+
+Kod değişikliklerinin paketlenip otomatik olarak test ortamına deploy edilmesi ve
+production için hazır olmasıdır. Prouction'a alınma kararı Continous Delivery'nin
+aksine otomatiktir.
+
+## How to measure the effect?
+
+### Lead time
+
+Bir özelliğin fikir olarak ortaya çıkışından itibaren kullanıcılara sunulduğu ana kadar geçen süredir. Ancak yazılımda işin board'a açıldıktan sonrası dikkate alınır. Süre ne kadar uzunsa, iş yapıldıktan sonra geribildirim alınması da o kadar uzun olur.
+
+### Cycle time
+
+İşin yapılmaya başlandığı andan itibaren kullanıcıya sunulduğu ana kadar geçen süredir.
+
+### Time to value (TTV)
+
+Kodun geliştirmesi bittikten sonra kullanıcıya sunulana kadar geçen süredir.
+
+### Deployment frequency
+
+Deployment yapmak için CI/CD workflow'unun çalıştırılma sayısıdır. Bu sayı ne kadar yüksekse, çıkan kod o kadar az sayıda değişklik içerir ve incident ihtimali azalır.
+
+### Mean time to detect (MTTD)
+
+Deployment yapıldığı andan itibaren değişikliklerden kaynaklanan sorunu tespit etmek için geçen ortalama süredir. Bu süre ne kadar kısa olursa, kullanıcılar o kadar az etkilenir.
+
+### Mean time to recovery (MTTR)
+
+Deployment yapıldığı andan itibaren production'daki problemin giderilmesi için geçen ortalama süredir. Otomatik sistem de olsa hatalar kaçınılmaz olabilir. Bu noktada amaç hatalara müdahale süresini en aza indirmektir.
+
+### Rollback rate
+
+Rollback yapılan deployment yüzdesidir. Deployment'ın uygulamada problemlere sebep olmasindan dolayi geri alınma işlemine **rollback** denir.
+
+{/* <div>
+  {
+    [
+      { title: "Lead time (delivery time)", description: "Bir özelliğin fikir olarak ortaya çıkışından itibaren kullanıcılara sunulduğu ana kadar geçen süredir. Ancak yazılımda işin board'a açıldıktan sonrası dikkate alınır. Süre ne kadar uzunsa, iş yapıldıktan sonra geribildirim alınması da o kadar uzun o
+      { title: "Cycle time", description: "İşin yapılmaya başlandığı andan itibaren kullanıcıya sunulduğu ana kadar geçen süredir."},
+      { title: "Time to value", description: "Kodun geliştirmesi bittikten sonra kullanıcıya sunulana kadar geçen süredir." },
+      { title: "Deployment frequency", description: "Deployment yapmak için CI/CD workflow'unun çalıştırılma sayısıdır. Bu sayı ne kadar yüksekse, çıkan kod o kadar az sayıda değişklik içerir ve incident ihtimali azalır." },
+      { title: "Mean time to detect", description: "Deployment yapıldığı andan itibaren değişikliklerden kaynaklanan sorunu tespit etmek için geçen ortalama süredir. Bu süre ne kadar kısa olursa, kullanıcılar o kadar az etkilenir." },
+      { title: "Mean time to recovery", description: "Deployment yapıldığı andan itibaren production'daki problemin giderilmesi için geçen ortalama süredir. Otomatik sistem de olsa hatalar kaçınılmaz olabilir. Bu noktada amaç hatalara müdahale süresini en aza indirmektir." },
+      { title: "Rollback rate", description: "Rollback yapılan deployment yüzdesidir. Deployment'ın uygulamada problemlere sebep olmasindan dolayi geri alınma işlemine <b>rollback</b> denir." }
+    ].map(({title, description}, i) => (
+      <div class={`relative flex items-start ${i !== 6 ? "pb-2" : ""} ml-4`}>
+        <div class="absolute w-px h-[calc(100%-2.75rem)] top-[2.75rem] bg-gray-200/70 dark:bg-white/10" />
+        <div class="absolute ml-[-14px] py-2">
+          <div class="w-7 h-7 shrink-0 rounded-lg bg-gray-100 dark:text-white dark:bg-[#26292E] text-sm text-gray-800 font-semibold flex items-center justify-center" />
+        </div>
+        <div class="w-full overflow-hidden pl-12 pr-px">
+          <span class="block mt-2 -ml-4 font-bold">{title}</span>
+          <span class={`block mt-2 -ml-4 ${i !== 6 ? "pb-2" : ""}`} dangerouslySetInnerHTML={{__html: description}}></span>
+        </div>
+      </div>
+    ))
+  }
+</div> */}
+
+{/* <div className="ml-4 flex flex-col">
+  <Step>
+    <span className="block mt-2 -ml-4 font-bold">Lead time (delivery time)</span>
+    <span className="block mt-2 -ml-4 pb-2">
+      Bir özelliğin fikir olarak ortaya çıkışından itibaren kullanıcılara sunulduğu ana kadar geçen süredir. Ancak yazılımda işin board'a açıldıktan sonrası dikkate alınır. Süre ne kadar uzunsa, iş yapıldıktan sonra geribildirim alınması da o kadar uzun olur.
+    </span>
+  </Step>
+  <Step>
+    <span className="block mt-2 -ml-4 font-bold">Cycle time</span>
+    <span className="block mt-2 -ml-4 pb-2">
+      İşin yapılmaya başlandığı andan itibaren kullanıcıya sunulduğu ana kadar geçen süredir.
+    </span>
+  </Step>
+  <Step>
+    <span className="block mt-2 -ml-4 font-bold">Time to value</span>
+    <span className="block mt-2 -ml-4 pb-2">
+      Kodun geliştirmesi bittikten sonra kullanıcıya sunulana kadar geçen süredir.
+    </span>
+  </Step>
+    <Step>
+    <span className="block mt-2 -ml-4 font-bold">Deployment frequency</span>
+    <span className="block mt-2 -ml-4 pb-2">
+      Deployment yapmak için CI/CD workflow'unun çalıştırılma sayısıdır. Bu sayı ne kadar yüksekse, çıkan kod o kadar az sayıda değişklik içerir ve incident ihtimali azalır.
+    </span>
+  </Step>
+  <Step>
+    <span className="block mt-2 -ml-4 font-bold">Mean time to detect</span>
+    <span className="block mt-2 -ml-4 pb-2">
+      Deployment yapıldığı andan itibaren değişikliklerden kaynaklanan sorunu tespit etmek için geçen ortalama süredir. Bu süre ne kadar kısa olursa, kullanıcılar o kadar az etkilenir.
+    </span>
+  </Step>
+  <Step>
+    <span className="block mt-2 -ml-4 font-bold">Mean time to recovery</span>
+    <span className="block mt-2 -ml-4 pb-2">
+      Deployment yapıldığı andan itibaren production'daki problemin giderilmesi için geçen ortalama süredir. Otomatik sistem de olsa hatalar kaçınılmaz olabilir. Bu noktada amaç hatalara müdahale süresini en aza indirmektir.
+    </span>
+  </Step>
+  <Step>
+    <span className="block mt-2 -ml-4 font-bold">Rollback rate</span>
+    <span className="block mt-2 -ml-4 overflow-hidden">
+      Rollback yapılan deployment yüzdesidir. Deployment'ın uygulamada problemlere sebep olmasindan dolayi geri alınma işlemine **rollback** denir.
+    </span>
+  </Step>
+</div> */}
+
+---
+
+Artık CI/CD sürecinin ne olduğunu, neden önemli olduğunu ve nasıl ölçüleceğini biliyorsunuz.

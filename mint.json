@@ -1,9 +1,12 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Enes Başpınar's Docs",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/scream.png",
+    "light": "/logo/scream.png"
+  },
+  "primaryTab": {
+    "name": "Home"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -15,77 +18,57 @@
       "to": "#07C983"
     }
   },
-  "topbarLinks": [
-    {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
-    }
-  ],
+  "topbarLinks": [],
   "topbarCtaButton": {
     "name": "Dashboard",
     "url": "https://dashboard.mintlify.com"
   },
   "tabs": [
     {
-      "name": "API Reference",
-      "url": "api-reference"
-    }
-  ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
+      "name": "Javascript Ecosystem",
+      "url": "javascript-ecosystem"
     },
     {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "name": "CI/CD",
+      "url": "ci-cd"
     }
   ],
+  "anchors": [],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Home",
+      "pages": ["introduction"]
+    },
+    {
+      "group": "Overview",
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "javascript-ecosystem/introduction",
+        "javascript-ecosystem/tech-stack",
+
+        "ci-cd/summary",
+        "ci-cd/tech-stack"
       ]
     },
     {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
+      "group": "Node.js",
+      "pages": ["javascript-ecosystem/nodejs/concept"]
     },
     {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
+      "group": "React",
+      "pages": ["javascript-ecosystem/react/concept"]
     },
     {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
-      ]
+      "group": "Svelte",
+      "pages": ["javascript-ecosystem/svelte/concept"]
+    },
+    {
+      "group": "Gitlab",
+      "pages": ["ci-cd/gitlab/concept"]
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "x": "https://x.com/ensbaspinar",
+    "github": "https://github.com/baspinarenes",
+    "linkedin": "https://www.linkedin.com/in/enesbaspinar"
   }
 }
