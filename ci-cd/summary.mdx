@@ -5,7 +5,7 @@ description: 'CI/CD hakkında özet bilgi.'
 
 <img
   className="block mx-auto w-12"
-  src="/images/ci-cd.png"
+  src="/images/hero/ci-cd.png"
   alt="CI/CD"
 />
 
@@ -38,30 +38,34 @@ Tüm bu süreçlerin otomatize edilmesinin birkaç avantajı vardır:
 
 ## Concepts
 
-<img
-  className="block mx-auto w-12 rounded-lg"
-  src="/images/ci-cd-2.png"
-  alt="CI/CD"
-/>
+<Frame caption="Source: gitlab.com">
+  <img
+    className="block mx-auto w-12 rounded-lg"
+    src="https://d36ai2hkxl16us.cloudfront.net/course-uploads/bf663a54-0bb6-4726-bd83-1e76668129cf/8u7utgpy3iuj-GitLabWorkflow.png"
+    alt="CI/CD"
+  />
+</Frame>
 
 ### Continuous Integration (CI)
 
 Birden fazla yazılımcının aynı projede çalıştığı durumlarda, kodların sık sık
-ana branch'e entegre edilmesidir yani merge edilmesidir. Uygulama derlenir ve
-testler çalıştırılır. Biriktirerek merge etme karmaşıklığından da kaçılmış olunur.
+repoya entegre edilmesidir. Daha sonra değişiklikleri doğrulamak için otomatik
+build ve testler çalıştırılarak kod kalitesi sağlanır. Sorunlar erken tespit
+edilir ve merge request'ler birikmez.
 
 ### Continuous Delivery (CD)
 
-Kod değişikliklerinin paketlenip otomatik olarak test ortamına deploy edilmesi ve
-production için hazır olmasıdır. Prouction'a alınma kararı ise manueldir.
+Continuous Integration'ın bir adım ötesidir. Kod paketlenip otomatik olarak
+test ortamına deploy edilir ve production için hazırlanır. Production'a deploy
+etme kararı manueldir.
 
 ### Continuous Deployment (CD)
 
-Kod değişikliklerinin paketlenip otomatik olarak test ortamına deploy edilmesi ve
-production için hazır olmasıdır. Prouction'a alınma kararı Continous Delivery'nin
-aksine otomatiktir.
+Continuous Delivery'ın bir adım ötesidir. Production'a otomatik deploy eder.
 
 ## How to measure the effect?
+
+CI/CD workflow'unuzun başarısını ölçmek için birkaç metrikten faydalanabiliriz:
 
 ### Lead time
 
@@ -161,6 +165,5 @@ Rollback yapılan deployment yüzdesidir. Deployment'ın uygulamada problemlere 
   </Step>
 </div> */}
 
----
-
+<br/>
 Artık CI/CD sürecinin ne olduğunu, neden önemli olduğunu ve nasıl ölçüleceğini biliyorsunuz.

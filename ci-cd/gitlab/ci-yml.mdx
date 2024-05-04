@@ -1,0 +1,91 @@
+---
+title: '.gitlab-ci.yml'
+description: ''
+---
+
+GitLab CI/CD kullanmak için `.gitlab-ci.yml` dosyası oluşturmanız
+gerekir. Bu dosya, inşa edilecek pipeline'a dair talimatları içerir.
+GitLab Runner, talimatları GitLab API aracılığıyla çalıştırır.
+
+YAML formatında yazılan dosya, projenin kök dizininde bulunmalıdır.
+GitLab CI/CD tarafından otomatik olarak algılanır ve çalıştırılır.
+
+```yaml
+image: registery.gitlab.com/node:latest
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  script:
+    - [build command]
+  only:
+    - master
+
+deploy:
+  stage: deploy
+  script:
+    - [deploy command]
+  environment:
+    name: production
+    url: https://example.com
+  variables:
+    KEY: "value"
+  only:
+    - master
+```
+
+## Concepts
+
+### Stages
+
+Pipeline aşamalarını tanımlar. Her aşama, bir veya daha fazla
+**job** içerir. Stage'ler sırayla çalıştırılır.
+
+```yaml
+stages:
+  - build
+  - test
+  - deploy
+```
+
+### Jobs
+
+Job, bir işi gerçekleştirmek üzere yapılandırılmış bir komut
+kümesidir. İlişkili job'lar **stage** halinde gruplandırılır.
+Aynı stage içindeki job'lar eşzamanlı olarak çalıştırılır.
+
+```yaml
+build:
+  stage: build
+  script:
+    - [build command] 
+```
+
+<Info>`script` keyword job için tanımlanması zorunlu olan tek parametredir.</Info>
+
+#### Stage
+
+#### Script
+
+#### Environment
+
+#### Variables
+
+## Rules (Only/Except/New)
+
+## Includes
+
+External YAML dosyalarını CI/CD konfigürasyonunuza dahil etmenizi sağlar. Bu
+sayede tekrar eden yapıları ayrı dosyalarda tanımlayabilir ve daha okunabilir
+hale getirebilirsiniz.
+
+// TODO: Example koy.
+
+## Artifacts
+
+## Cache
+
+## Dependencies

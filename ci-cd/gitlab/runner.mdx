@@ -1,0 +1,92 @@
+---
+title: 'Runner'
+description: ''
+---
+
+Runner, `.gitlab-ci.yml` dosyanızda yapılandırılan job'ları çalıştıran
+open source Golang uygulamasıdır. GitLab.com'da barındırılan projeler için GitLab
+tarafından host edilen runner'lar kullanılır. Ancak custom GitLab server'ınız 
+varsa kendi datacenter'ınızda scalable runner'larınızı oluşturmanız gerekir.
+
+<img
+  className="block mx-auto rounded-lg"
+  style={{ width: '600px' }}
+  src="https://d36ai2hkxl16us.cloudfront.net/course-uploads/bf663a54-0bb6-4726-bd83-1e76668129cf/54d9mztq6kps-image.png"
+  alt="GitLab Flow"
+/>
+
+Her runner bir sanal makine veya container'da çalışır. GitLab hosted runner'lar
+job tamamlandığında silinir ve hiçbir job aynı makinede çalışmaz.
+
+## Scope
+
+Tanımlanabilecekleri üç farklı scope bulunur:
+
+- Instance: GitLab'inizdeki tüm projelerde kullanılabilir. Bu runner'lara **shared
+  runner** denir. GitLab adminleri yönetir. Halihazırda shared runner'larda
+  çalışan en az işe sahip olan proje queue'da önceliklendirilir.
+- Group: Belirli bir grubun altındaki projelerde kullanılabilir. Bu runner'lara **group
+  runner** denir. Resource'u paylaşmak istiyorsanız veya birden fazla projenin
+  pipeline'ını çalıştırmak istiyorsanız idealdir.
+- Project: Sadece belirli bir projede kullanılabilir. Bu runner'lara **spesific
+  runner** denir.
+
+## Tag
+
+Runner'lar tag'lar ile etiketlenebilir. Bu sayede `.gitlab-ci.yml` dosyasında
+job'lar tag'lar ile belirli runner'ları hedefleyebilir. Örneğin ruby çalıştırmak
+için optimize edilmiş bir runner oluşturabilirsiniz.
+
+```yaml
+job:
+  tags:
+    - ruby
+```
+
+## Executor
+
+Job için çalıştırma ortamını tanımlar ve bağımlılıkları sağlar. GitLab, job'ları
+Runner'lar ile konfigürasyonlarına göre eşleştirir. En yaygın executor'lar:
+
+- Shell: Job'ları shell komutları ile çalıştırır. Komutlar GitLab Runner'ın
+  kurulduğu  makinede local olarak çalıştırılır.
+- Docker: Job'ları Docker container'larında çalıştırır.
+
+For details, see [GitLab Runner Executor](https://docs.gitlab.com/runner/executors/).
+
+## config.toml
+
+Runner'ın konfigürasyon dosyasıdır. Bu dosya ile runner'ın nasıl çalıştırılacağı,
+hangi executor'ın kullanılacağı, hangi tag'ların kullanılacağı gibi ayarlar
+tanımlanır.
+
+```toml
+# Global settings
+concurrent = 4
+log_level = "warning"
+
+# Single runner detination
+[[runners]]
+  name = "runner-name"
+  url = "https://gitlab.com/"
+  token = "your-token"
+  executor = "docker"
+  [runners.docker]
+    host = ""
+  [runners.virtualbox]
+    base_name = ""
+  [runners.machine]
+    IdleCount = 0
+    IdleTime = 1800
+  [runners.cache]
+    type = "s3"
+  [runners.kubernetes]
+    cert_file = "/path/to/certfile"
+```
+
+For details, see [GitLab Runner Configuration](https://docs.gitlab.com/runner/configuration/).
+
+## Create your own runner
+
+Kendi runner'ınızı oluşturmak için ilk yapmanız gereken GitLab Runner'ı 
+kurmanızdır.

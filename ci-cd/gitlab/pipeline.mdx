@@ -1,0 +1,31 @@
+---
+title: 'Pipeline'
+description: ''
+---
+
+## Status
+
+Pipeline şu durumlarda olabilir:
+
+- created
+- waiting_for_resource
+- preparing
+- pending
+- running
+- success
+- failed
+- canceled
+- skipped
+- manual
+- scheduled
+
+## Types
+
+Pipeline türleri:
+
+Other pipeline types include:
+
+- Parent-child pipelines: a pipeline that triggers a set of concurrently running child pipelines.
+- Multi-project pipelines: a pipeline in one project triggers a pipeline in another project.
+- Merge request pipelines: a pipeline that runs every time you make changes to the source branch for a merge request.
+- Merge trains: queue merge requests and verify their changes work together before they're merged to the target branch. 

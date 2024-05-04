@@ -1,0 +1,94 @@
+---
+title: 'Git Flow'
+description: "GitLab'ın önerdiği branching modeli."
+---
+
+Tutarlı ve verimli bir şekilde çalışmak için Git'in nasıl etkili ve
+verimli bir şekilde kullanılacağını belirleyen kılavuzdur. Yazılım
+geliştirmeyi issue sistemine entegre eder.
+
+### GitLab Flow
+
+Git ile iş akışınızı yönetmek için kullanılan bir modeldir. Bu model,
+GitLab'ın özelliklerini kullanarak, kodunuzu nasıl yazıp test edeceğinizi,
+birleştireceğinizi ve dağıtacağınızı belirler.
+
+Bu modelde, iki farklı workflow kurgulanabilir.
+
+#### Environment branches
+
+<img
+  className="block mx-auto rounded-lg"
+  style={{ width: '400px' }}
+  src="https://d36ai2hkxl16us.cloudfront.net/course-uploads/bf663a54-0bb6-4726-bd83-1e76668129cf/52b8qtm8e7it-gitlab_flow_environment_branches.png"
+  alt="GitLab flow environment branches"
+/>
+
+"production", "pre-production" gibi environment bazlı branch'ler üzerinden ilerlenir. Önerilen iş akışı şu şekildedir:
+
+<div>
+  {
+    [
+      { title: "Feature", description: "Kod feature branch'te geliştirilir."},
+      { title: "Master", description: "İlk deploy master branch'e yapılır. Bu branch stage ortamına baktırılabilir." },
+      { title: "Pre-production", description: "Ardından master branch'ten pre-production branch'e merge request oluşturulur ve pre-production ortama deploy gerçekleşir." },
+      { title: "Production", description: "Son olarak pre-production branch production branch'e merge edilerek canlıya alınır." }
+    ].map(({title, description}, i) => (
+      <div class={`relative flex items-start ml-4 ${i !== 3 ? "pb-2" : ""}`}>
+        <div class="absolute w-px h-[calc(100%-2.75rem)] top-[2.75rem] bg-gray-200/70 dark:bg-white/10" />
+        <div class="absolute ml-[-14px] py-2">
+          <div class="w-7 h-7 shrink-0 rounded-lg bg-gray-100 dark:text-white dark:bg-[#26292E] text-sm text-gray-800 font-semibold flex items-center justify-center">{i + 1}</div>
+        </div>
+        <div class="w-full overflow-hidden pl-12 pr-px">
+          <span class="block mt-2 -ml-4 font-bold">{title}</span>
+          <span class={`block mt-2 -ml-4 ${i !== 3 ? "pb-2" : ""}`} dangerouslySetInnerHTML={{__html: description}}></span>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+Bug fix akışında ise feature branch yerine bugfix branch'te geliştirme
+yapılır. Incident anında direkt olarak production fix'lenmek istenirse
+production branch'e merge request oluşturulur ve commit diğer branch'lere
+cherry-pick edilir.
+
+#### Release branches
+
+<img
+  className="block mx-auto rounded-lg"
+  style={{ width: '400px' }}
+  src="https://d36ai2hkxl16us.cloudfront.net/course-uploads/bf663a54-0bb6-4726-bd83-1e76668129cf/qtd1bfsneb5c-Screenshot2023-07-13at5.34.06PM.png"
+  alt="GitLab flow release branches"
+/>
+
+<div>
+  {
+    [
+      { title: "Stable branches", description: "Başlangıç noktası olarak master branch'ten stable branch'ler oluşturun."},
+      { title: "Release branch", description: "Release branch duyurduktan sonra yalnızca ciddi bugfix'ler için ekleme yapın." },
+      { title: "Master", description: "Mümkünse bug fix'leri ilk önce master'a merge edin ardından release branch'e cherry-pick yapın." },
+    ].map(({title, description}, i) => (
+      <div class={`relative flex items-start ml-4 ${i !== 2 ? "pb-2" : ""}`}>
+        <div class="absolute w-px h-[calc(100%-2.75rem)] top-[2.75rem] bg-gray-200/70 dark:bg-white/10" />
+        <div class="absolute ml-[-14px] py-2">
+          <div class="w-7 h-7 shrink-0 rounded-lg bg-gray-100 dark:text-white dark:bg-[#26292E] text-sm text-gray-800 font-semibold flex items-center justify-center">{i + 1}</div>
+        </div>
+        <div class="w-full overflow-hidden pl-12 pr-px">
+          <span class="block mt-2 -ml-4 font-bold">{title}</span>
+          <span class={`block mt-2 -ml-4 ${i !== 2 ? "pb-2" : ""}`} dangerouslySetInnerHTML={{__html: description}}></span>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+Bug fix akışında ise bug tespit edilirse master'a bugfix
+merge request oluşturulur ve merge'lenir. Ardından cherry-pick ile
+release branch'e eklenir. Production'da hata tespit edilirse production
+branch'e merge request oluşturulur ve cherry-pick ile master branch'e
+eklenir.
+
+## Resouces
+
+- [GitLab Branching Strategy](https://www.youtube.com/watch?v=ZJuUz5jWb44)

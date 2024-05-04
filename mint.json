@@ -8,7 +8,7 @@
   "primaryTab": {
     "name": "Home"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/logo/scream.png",
   "colors": {
     "primary": "#0D9373",
     "light": "#07C983",
@@ -62,8 +62,17 @@
       "pages": ["javascript-ecosystem/svelte/concept"]
     },
     {
-      "group": "Gitlab",
-      "pages": ["ci-cd/gitlab/concept"]
+      "group": "GitLab",
+      "pages": [
+        "ci-cd/gitlab/summary",
+        "ci-cd/gitlab/pipline",
+        "ci-cd/gitlab/ci-yml",
+        "ci-cd/gitlab/variables",
+        "ci-cd/gitlab/runner",
+        "ci-cd/gitlab/package-registry",
+        "ci-cd/gitlab/container-registry",
+        "ci-cd/gitlab/git-flow"
+      ]
     }
   ],
   "footerSocials": {

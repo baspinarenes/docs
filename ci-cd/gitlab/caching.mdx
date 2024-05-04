@@ -1,0 +1,46 @@
+---
+title: 'Caching'
+description: ''
+---
+
+## Cache
+
+**Cache**, bir job'ın download ettiği birkaç dosyadan ibarettir. Aynı cache
+kullanan job'lar arasında dosyalar tekrardan download edilmez.
+
+Node module packages gibi internetten indirilen bağımlılıklar için kullanın.
+
+GitLab runner'ın kurulduğu yerde saklanır. Distributed cache aktifse S3'e
+yüklenir.
+
+Job'a cache tanımlamak için `cache` anahtarını kullanın.
+
+Subsequent (??) pipeline'lar ve job'lar cache'i kullanabilir. Farklı projeler
+cache'i paylaşamaz.
+
+Protected ve non-protected branch'lerde default olarak cache paylaşılmaz.
+
+```yaml
+cache:
+  key: "$CI_COMMIT_REF_NAME"
+  paths:
+    - node_modules/
+```
+
+## Artifact
+
+**Artifact**, 
+
+Aynı pipeline'da sonraki stage'deki job'lar artifact'leri kullanabilir.
+
+Farklı projeler arasında artifact palaşılamaz.
+
+Özel olarak expire time tanımlanmazsa 30 gün sonra silinir.
+
+**Keep latest artifacts** seçeneği aktifse en son oluşturulan artifact'ler
+hiçbir zaman expire olmaz.
+
+Hangi işlerin artifact'lara erişeceğini kontrol etmek için `dependency` kullanın.
+
+Build sonuçlarını stage'ler arasında iletmek için kullanın. Job tarafından
+oluşturulur, GitLab'da depolanır ve indirilebilir.
