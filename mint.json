@@ -31,35 +31,46 @@
     {
       "name": "CI/CD",
       "url": "ci-cd"
+    },
+    {
+      "name": "Agile and Team Management",
+      "url": "agile-and-team-management"
     }
   ],
   "anchors": [],
   "navigation": [
     {
       "group": "Home",
-      "pages": ["introduction"]
+      "pages": [
+        "introduction"
+      ]
     },
     {
       "group": "Overview",
       "pages": [
         "javascript-ecosystem/introduction",
         "javascript-ecosystem/tech-stack",
-
         "ci-cd/summary",
         "ci-cd/tech-stack"
       ]
     },
     {
       "group": "Node.js",
-      "pages": ["javascript-ecosystem/nodejs/concept"]
+      "pages": [
+        "javascript-ecosystem/nodejs/concept"
+      ]
     },
     {
       "group": "React",
-      "pages": ["javascript-ecosystem/react/concept"]
+      "pages": [
+        "javascript-ecosystem/react/concept"
+      ]
     },
     {
       "group": "Svelte",
-      "pages": ["javascript-ecosystem/svelte/concept"]
+      "pages": [
+        "javascript-ecosystem/svelte/concept"
+      ]
     },
     {
       "group": "GitLab",
@@ -72,6 +83,14 @@
         "ci-cd/gitlab/package-registry",
         "ci-cd/gitlab/container-registry",
         "ci-cd/gitlab/git-flow"
+      ]
+    },
+    {
+      "group": "Team Topology",
+      "pages": [
+        "agile-and-team-management/team-topology/summary",
+        "agile-and-team-management/team-topology/cognitive-load",
+        "agile-and-team-management/team-topology/two-pizza-team"
       ]
     }
   ],
